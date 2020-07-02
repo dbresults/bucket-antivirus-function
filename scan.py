@@ -107,11 +107,11 @@ def delete_s3_object(s3_object):
         s3_object.delete()
     except Exception:
         raise Exception(
-            "Failed to delete infected file: %s.%s"
+            "Failed to delete file: %s.%s"
             % (s3_object.bucket_name, s3_object.key)
         )
     else:
-        print("Infected file deleted: %s.%s" % (s3_object.bucket_name, s3_object.key))
+        print("File deleted: %s.%s" % (s3_object.bucket_name, s3_object.key))
 
 
 def set_av_metadata(s3_object, scan_result, scan_signature, timestamp):
@@ -264,8 +264,12 @@ def lambda_handler(event, context):
         os.remove(file_path)
     except OSError:
         pass
-    if str_to_bool(AV_DELETE_INFECTED_FILES) and scan_result == AV_STATUS_INFECTED:
-        delete_s3_object(s3_object)
+
+    #if str_to_bool(AV_DELETE_INFECTED_FILES) and scan_result == AV_STATUS_INFECTED:
+    #    delete_s3_object(s3_object)
+
+    # delete all files after scanning
+    delete_s3_object(s3_object)
     stop_scan_time = get_timestamp()
     print("Script finished at %s\n" % stop_scan_time)
 
