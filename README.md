@@ -16,6 +16,7 @@ open source antivirus engine [ClamAV](http://www.clamav.net/)
 - delete the files after scan, regardless of status (we don't keep the files on S3)
 - Dockerfile fix for missing dependencies
 - Vagrantfile for easy build (see Build using Vagrant instructions below)
+- modified lambda setup instructions: increase memory allocation for scan function
 
 ## How It Works
 
@@ -248,7 +249,7 @@ created in step 1.
 and set its value to the name of the bucket created to store your AV
 definitions. If your bucket is `s3://my-bucket`, the value should be `my-bucket`.
 12. Under *Basic settings*, set *Timeout* to **5 minutes** and *Memory* to
-**1024**
+**~~1024~~1536**
 13. Save the function.  Testing is easiest performed by uploading a
 file to the bucket configured as the trigger in step 4.
 
