@@ -12,6 +12,11 @@ Scan new objects added to any s3 bucket using AWS Lambda. [more details in this 
 - Accesses the end-user’s separate installation of
 open source antivirus engine [ClamAV](http://www.clamav.net/)
 
+### Features of this branch (NDIA super special branch)
+- delete the files after scan, regardless of status (we don't keep the files on S3)
+- Dockerfile fix for missing dependencies
+- Vagrantfile for easy build
+
 ## How It Works
 
 ![architecture-diagram](../master/images/bucket-antivirus-function.png)
