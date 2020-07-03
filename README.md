@@ -15,7 +15,7 @@ open source antivirus engine [ClamAV](http://www.clamav.net/)
 ### Features of this branch (NDIA super special branch)
 - delete the files after scan, regardless of status (we don't keep the files on S3)
 - Dockerfile fix for missing dependencies
-- Vagrantfile for easy build
+- Vagrantfile for easy build (see Build using Vagrant instructions below)
 
 ## How It Works
 
@@ -36,6 +36,17 @@ or INFECTED, along with the date and time of the scan.
 - Files found to be INFECTED are automatically deleted (optional)
 
 ## Installation
+
+### Build using Vagrant
+
+Pre-requisites:
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+- [Vagrant](https://www.vagrantup.com/downloads.html)
+
+```bash
+cd bucket-antivirus-function
+vagrant up
+```
 
 ### Build from Source
 
